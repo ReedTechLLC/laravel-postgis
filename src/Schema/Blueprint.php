@@ -271,6 +271,30 @@ class Blueprint extends IlluminateBlueprint
     }
 
     /**
+     * Add a 3 dimensional point column on the table (X,Y,Z).
+     * Z usually stands for altitude.
+     *
+     * @param      $column
+     * @return \Illuminate\Support\Fluent
+     */
+    public function point3d($column, $geomtype = 'GEOGRAPHY', $srid = '4326')
+    {
+        return $this->addColumn('pointz', $column, compact('geomtype', 'srid'));
+    }
+
+    /**
+     * Add a 4 dimensional point column on the table (X,Y,Z,M).
+     * M stands for Measurement but is usually used as a timestamp.
+     *
+     * @param      $column
+     * @return \Illuminate\Support\Fluent
+     */
+    public function point4d($column, $geomtype = 'GEOGRAPHY', $srid = '4326')
+    {
+        return $this->addColumn('pointzm', $column, compact('geomtype', 'srid'));
+    }
+
+    /**
      * Add a multipoint column on the table
      *
      * @param      $column

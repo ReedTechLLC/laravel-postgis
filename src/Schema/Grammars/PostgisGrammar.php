@@ -317,6 +317,28 @@ class PostgisGrammar extends PostgresGrammar
     }
 
     /**
+     * Adds a statement to add a 3d point geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typePointZ(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'POINTZ');
+    }
+
+    /**
+     * Adds a statement to add a 4d point geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typePointZM(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'POINTZM');
+    }
+
+    /**
      * Adds a statement to add a point geometry column
      *
      * @param \Illuminate\Support\Fluent $column
