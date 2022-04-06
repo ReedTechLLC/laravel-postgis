@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Tests\Geometries;
 
-use Ajthinking\LaravelPostgis\Geometries\MultiPoint;
-use Ajthinking\LaravelPostgis\Geometries\Point;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Geometries\MultiPoint;
+use ReedTechLLC\LaravelPostgis\Geometries\Point;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class MultiPointTest extends BaseTestCase
 {

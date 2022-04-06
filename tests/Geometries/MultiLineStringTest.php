@@ -1,11 +1,11 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Tests\Geometries;
 
-use Ajthinking\LaravelPostgis\Geometries\LineString;
-use Ajthinking\LaravelPostgis\Geometries\MultiLineString;
-use Ajthinking\LaravelPostgis\Geometries\Point;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Geometries\LineString;
+use ReedTechLLC\LaravelPostgis\Geometries\MultiLineString;
+use ReedTechLLC\LaravelPostgis\Geometries\Point;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class MultiLineStringTest extends BaseTestCase
 {

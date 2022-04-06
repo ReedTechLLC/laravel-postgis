@@ -1,6 +1,6 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Geometries;
 
 use ArrayAccess;
 use ArrayIterator;

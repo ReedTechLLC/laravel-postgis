@@ -1,17 +1,17 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Schema\Grammars;
+namespace ReedTechLLC\LaravelPostgis\Schema\Grammars;
 
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Schema\Grammars\PostgresGrammar;
-use Ajthinking\LaravelPostgis\Schema\Blueprint;
-use Ajthinking\LaravelPostgis\Exceptions\UnsupportedGeomtypeException;
+use ReedTechLLC\LaravelPostgis\Schema\Blueprint;
+use ReedTechLLC\LaravelPostgis\Exceptions\UnsupportedGeomtypeException;
 
 class PostgisGrammar extends PostgresGrammar
 {
     public static $allowed_geom_types = ['GEOGRAPHY', 'GEOMETRY'];
 
-     /**
+    /**
      * Check if the type is uuid, use internal guid
      * 
      * @param  string $type
@@ -19,7 +19,7 @@ class PostgisGrammar extends PostgresGrammar
      */
     protected function getDoctrineColumnType($type)
     {
-        if($type === 'uuid') {
+        if ($type === 'uuid') {
             $type = 'guid';
         }
 
@@ -242,7 +242,7 @@ class PostgisGrammar extends PostgresGrammar
     {
         return "daterange";
     }
-    
+
     /**
      * Create the column definition for a Text Search Vector type.
      *
@@ -261,7 +261,7 @@ class PostgisGrammar extends PostgresGrammar
      */
     protected function getDefaultValue($value)
     {
-        if($this->isUuid($value)) return strval($value);
+        if ($this->isUuid($value)) return strval($value);
 
         return parent::getDefaultValue($value);
     }
@@ -280,7 +280,7 @@ class PostgisGrammar extends PostgresGrammar
     /**
      * Compile a gin index key command.
      *
-     * @param  \Ajthinking\LaravelPostgis\Schema\Blueprint  $blueprint
+     * @param  \ReedTechLLC\LaravelPostgis\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
      * @return string
      */
@@ -290,11 +290,11 @@ class PostgisGrammar extends PostgresGrammar
 
         return sprintf('CREATE INDEX %s ON %s USING GIN(%s)', $command->index, $this->wrapTable($blueprint), $columns);
     }
-    
+
     /**
      * Compile a gist index key command.
      *
-     * @param  \Ajthinking\LaravelPostgis\Schema\Blueprint  $blueprint
+     * @param  \ReedTechLLC\LaravelPostgis\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
      * @return string
      */
@@ -474,15 +474,15 @@ class PostgisGrammar extends PostgresGrammar
         $schema = function_exists('config') ? config('postgis.schema') : 'public';
 
         return sprintf(
-                "SELECT %s.AddGeometryColumn('%s', '%s', %d, '%s.%s', %d, %s)",
-                $schema,
-                $blueprint->getTable(),
-                $command->column,
-                $srid,
-                $schema,
-                strtoupper($command->type),
-                $dimensions,
-                $typmod
+            "SELECT %s.AddGeometryColumn('%s', '%s', %d, '%s.%s', %d, %s)",
+            $schema,
+            $blueprint->getTable(),
+            $command->column,
+            $srid,
+            $schema,
+            strtoupper($command->type),
+            $dimensions,
+            $typmod
         );
     }
 
@@ -517,5 +517,4 @@ class PostgisGrammar extends PostgresGrammar
             throw new UnsupportedGeomtypeException('Error with validation of geom type or srid!');
         }
     }
-
 }

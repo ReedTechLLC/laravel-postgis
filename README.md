@@ -1,25 +1,25 @@
-Laravel Wrapper for PostgreSQL's Geo-Extension Postgis
-======================================================
+# Laravel Wrapper for PostgreSQL's Geo-Extension Postgis
 
-![Build Status](https://github.com/ajthinking/laravel-postgis/workflows/Test%20Suite/badge.svg)
+![Build Status](https://github.com/ReedTechLLC/laravel-postgis/workflows/Test%20Suite/badge.svg)
 
 For Laravel 9+, PHP 8+ only
 
 ## Features
 
- * Work with geometry classes instead of arrays.
+-   Work with geometry classes instead of arrays.
+
 ```php
 $model->myPoint = new Point(1,2);  //lat, long
 ```
 
-* Adds helpers in migrations.
+-   Adds helpers in migrations.
+
 ```php
 $table->polygon('myColumn');
 ```
 
-
-
 ## Installation
+
 ```bash
 composer require mstaack/laravel-postgis
 ```
@@ -33,7 +33,7 @@ To start, ensure you have PostGIS enabled in your database - you can do this in 
 You need to publish the migration to easily enable PostGIS:
 
 ```sh
-php artisan vendor:publish --provider="Ajthinking\LaravelPostgis\DatabaseServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="ReedTechLLC\LaravelPostgis\DatabaseServiceProvider" --tag="migrations"
 ```
 
 And then you run the migrations:
@@ -70,7 +70,7 @@ Open the created migrations with your editor.
 
 ```PHP
 use Illuminate\Database\Migrations\Migration;
-use Ajthinking\LaravelPostgis\Schema\Blueprint;
+use ReedTechLLC\LaravelPostgis\Schema\Blueprint;
 
 class CreateLocationsTable extends Migration {
 
@@ -110,30 +110,30 @@ class CreateLocationsTable extends Migration {
 
 Available blueprint geometries:
 
- * point
- * multipoint
- * linestring
- * multilinestring
- * polygon
- * multipolygon
- * geometrycollection
+-   point
+-   multipoint
+-   linestring
+-   multilinestring
+-   polygon
+-   multipolygon
+-   geometrycollection
 
 other methods:
 
- * enablePostgis
- * disablePostgis
+-   enablePostgis
+-   disablePostgis
 
 ### Models
 
-All models which are to be PostGis enabled **must** use the *PostgisTrait*.
+All models which are to be PostGis enabled **must** use the _PostgisTrait_.
 
 You must also define an array called `$postgisFields` which defines
 what attributes/columns on your model are to be considered geometry objects. By default, all attributes are of type `geography`. If you want to use `geometry` with a custom SRID, you have to define an array called `$postgisTypes`. The keys of this assoc array must match the entries in `$postgisFields` (all missing keys default to `geography`), the values are assoc arrays, too. They must have two keys: `geomtype` which is either `geography` or `geometry` and `srid` which is the desired SRID. **Note**: Custom SRID is only supported for `geometry`, not `geography`.
 
 ```PHP
 use Illuminate\Database\Eloquent\Model;
-use Ajthinking\LaravelPostgis\Eloquent\PostgisTrait;
-use Ajthinking\LaravelPostgis\Geometries\Point;
+use ReedTechLLC\LaravelPostgis\Eloquent\PostgisTrait;
+use ReedTechLLC\LaravelPostgis\Geometries\Point;
 
 class Location extends Model
 {
@@ -202,18 +202,18 @@ $location2->location instanceof Point // true
 
 Available geometry classes:
 
- * Point
- * MultiPoint
- * LineString
- * MultiLineString
- * Polygon
- * MultiPolygon
- * GeometryCollection
-
+-   Point
+-   MultiPoint
+-   LineString
+-   MultiLineString
+-   Polygon
+-   MultiPolygon
+-   GeometryCollection
 
 ### Achnowledgements
-This is a [fork](https://github.com/mstaack/laravel-postgis) from the work of great people. Thanks to :
-- https://github.com/njbarrett
-- https://github.com/phaza
-- https://github.com/mirzap
 
+This is a [fork](https://github.com/mstaack/laravel-postgis) from the work of great people. Thanks to :
+
+-   https://github.com/njbarrett
+-   https://github.com/phaza
+-   https://github.com/mirzap

@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Schema;
+namespace ReedTechLLC\LaravelPostgis\Tests\Schema;
 
 use Mockery;
-use Ajthinking\LaravelPostgis\Schema\Blueprint;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Schema\Blueprint;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class BlueprintTest extends BaseTestCase
 {
@@ -125,7 +125,7 @@ class BlueprintTest extends BaseTestCase
 
         $this->blueprint->gin('col', 'myName');
     }
-    
+
     public function testGistIndex()
     {
         $this->blueprint
@@ -214,5 +214,5 @@ class BlueprintTest extends BaseTestCase
             ->with('tstzrange', 'col');
 
         $this->blueprint->tstzrange('col');
-    }	
+    }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis;
+namespace ReedTechLLC\LaravelPostgis;
 
 use Illuminate\Database\DatabaseServiceProvider as IlluminateDatabaseServiceProvider;
 use Illuminate\Database\DatabaseManager;
-use Ajthinking\LaravelPostgis\Connectors\ConnectionFactory;
+use ReedTechLLC\LaravelPostgis\Connectors\ConnectionFactory;
 
 class DatabaseServiceProvider extends IlluminateDatabaseServiceProvider
 {
@@ -16,7 +16,7 @@ class DatabaseServiceProvider extends IlluminateDatabaseServiceProvider
 
         if (!class_exists('EnablePostgis')) {
             $this->publishes([
-                __DIR__ . '/../database/migrations/enable_postgis.php.stub' => database_path('migrations/'.date('Y_m_d_His', time()).'_enable_postgis.php'),
+                __DIR__ . '/../database/migrations/enable_postgis.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_enable_postgis.php'),
             ], 'migrations');
         }
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Tests\Geometries;
 
-use Ajthinking\LaravelPostgis\Geometries\LineString;
-use Ajthinking\LaravelPostgis\Geometries\Point;
-use Ajthinking\LaravelPostgis\Geometries\Polygon;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Geometries\LineString;
+use ReedTechLLC\LaravelPostgis\Geometries\Point;
+use ReedTechLLC\LaravelPostgis\Geometries\Polygon;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class PolygonTest extends BaseTestCase
 {
@@ -77,7 +77,6 @@ class PolygonTest extends BaseTestCase
             '{"type":"Polygon","coordinates":[[[1,1],[2,1],[2,2],[1,2],[1,1]]]}',
             json_encode($this->polygon)
         );
-
     }
 
     public function testJsonSerialize3d()
@@ -87,6 +86,5 @@ class PolygonTest extends BaseTestCase
             '{"type":"Polygon","coordinates":[[[1,1,1],[2,1,2],[2,2,2],[1,2,2],[1,1,1]]]}',
             json_encode($this->polygon3d)
         );
-
     }
 }

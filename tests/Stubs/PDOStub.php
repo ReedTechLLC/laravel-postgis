@@ -1,6 +1,6 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Stubs;
+namespace ReedTechLLC\LaravelPostgis\Tests\Stubs;
 
 class PDOStub extends \PDO
 {

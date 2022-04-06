@@ -1,6 +1,6 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Schema;
+namespace ReedTechLLC\LaravelPostgis\Schema;
 
 use Illuminate\Database\Schema\Blueprint as IlluminateBlueprint;
 
@@ -64,7 +64,7 @@ class Blueprint extends IlluminateBlueprint
     {
         return $this->indexCommand('gin', $columns, $name);
     }
-    
+
     /**
      * Specify a gist index for the table.
      *
@@ -246,7 +246,7 @@ class Blueprint extends IlluminateBlueprint
     {
         return $this->addColumn('daterange', $column);
     }
-    
+
     /**
      * Create a new tsvector column on the table.
      *
@@ -258,7 +258,7 @@ class Blueprint extends IlluminateBlueprint
     {
         return $this->addColumn('tsvector', $column);
     }
-	
+
     /**
      * Add a point column on the table
      *
@@ -415,5 +415,4 @@ class Blueprint extends IlluminateBlueprint
     {
         return $this->addCommand('disablePostgisIfExists');
     }
-
 }

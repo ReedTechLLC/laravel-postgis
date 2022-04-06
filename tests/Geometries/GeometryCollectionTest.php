@@ -1,11 +1,11 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Tests\Geometries;
 
-use Ajthinking\LaravelPostgis\Geometries\GeometryCollection;
-use Ajthinking\LaravelPostgis\Geometries\LineString;
-use Ajthinking\LaravelPostgis\Geometries\Point;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Geometries\GeometryCollection;
+use ReedTechLLC\LaravelPostgis\Geometries\LineString;
+use ReedTechLLC\LaravelPostgis\Geometries\Point;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class GeometryCollectionTest extends BaseTestCase
 {
@@ -100,7 +100,6 @@ class GeometryCollectionTest extends BaseTestCase
             '{"type":"GeometryCollection","geometries":[{"type":"LineString","coordinates":[[1,1],[2,1],[2,2],[1,2],[1,1]]},{"type":"Point","coordinates":[200,100]}]}',
             json_encode($this->collection->jsonSerialize())
         );
-
     }
 
     public function testJsonSerialize3d()
@@ -114,6 +113,5 @@ class GeometryCollectionTest extends BaseTestCase
             '{"type":"GeometryCollection","geometries":[{"type":"LineString","coordinates":[[1,1,1],[2,1,3],[2,2,2],[1,2,0],[1,1,1]]},{"type":"Point","coordinates":[200,100,300]}]}',
             json_encode($this->collection3d->jsonSerialize())
         );
-
     }
 }

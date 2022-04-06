@@ -1,9 +1,9 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis;
+namespace ReedTechLLC\LaravelPostgis;
 
 use Illuminate\Database\PostgresConnection;
-use Ajthinking\LaravelPostgis\Schema\Grammars\PostgisGrammar;
+use ReedTechLLC\LaravelPostgis\Schema\Grammars\PostgisGrammar;
 
 class PostgisConnection extends PostgresConnection
 {
@@ -16,7 +16,7 @@ class PostgisConnection extends PostgresConnection
     {
         return new \Illuminate\Database\Query\Processors\PostgresProcessor;
     }
-	
+
     /**
      * Get the default schema grammar instance.
      *

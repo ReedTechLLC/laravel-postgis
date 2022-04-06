@@ -1,9 +1,9 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Geometries;
 
 use GeoIO\WKB\Parser\Parser;
-use Ajthinking\LaravelPostgis\Exceptions\UnknownWKTTypeException;
+use ReedTechLLC\LaravelPostgis\Exceptions\UnknownWKTTypeException;
 
 abstract class Geometry implements GeometryInterface, \JsonSerializable
 {

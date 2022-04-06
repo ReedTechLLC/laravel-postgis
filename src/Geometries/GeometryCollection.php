@@ -1,6 +1,6 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Geometries;
 
 use Countable;
 use InvalidArgumentException;
@@ -62,7 +62,6 @@ class GeometryCollection extends Geometry implements Countable
                     $klass = Geometry::getWKTClass($geometry_string);
 
                     return call_user_func($klass . '::fromWKT', $geometry_string);
-
                 },
                 $geometry_strings
             )

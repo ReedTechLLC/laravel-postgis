@@ -1,14 +1,14 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Schema\Grammars;
+namespace ReedTechLLC\LaravelPostgis\Tests\Schema\Grammars;
 
 use Illuminate\Database\Connection;
 use Mockery;
-use Ajthinking\LaravelPostgis\Exceptions\UnsupportedGeomtypeException;
-use Ajthinking\LaravelPostgis\PostgisConnection;
-use Ajthinking\LaravelPostgis\Schema\Blueprint;
-use Ajthinking\LaravelPostgis\Schema\Grammars\PostgisGrammar;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Exceptions\UnsupportedGeomtypeException;
+use ReedTechLLC\LaravelPostgis\PostgisConnection;
+use ReedTechLLC\LaravelPostgis\Schema\Blueprint;
+use ReedTechLLC\LaravelPostgis\Schema\Grammars\PostgisGrammar;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class PostgisGrammarTest extends BaseTestCase
 {
@@ -324,11 +324,11 @@ class PostgisGrammarTest extends BaseTestCase
         $statements = $blueprint->toSql($this->getConnection(), $this->getGrammar());
 
         $this->assertEquals(1, count($statements));
-		
+
         $this->assertStringContainsString('CREATE INDEX', $statements[0]);
         $this->assertStringContainsString('GIN("foo")', $statements[0]);
     }
-    
+
     public function testAddingGistIndex()
     {
         $blueprint = new Blueprint('test');
@@ -467,7 +467,7 @@ class PostgisGrammarTest extends BaseTestCase
         $this->assertStringContainsString('alter table', $statements[0]);
         $this->assertStringContainsString('add column "foo" daterange', $statements[0]);
     }
-    
+
     public function testAddingTsvector()
     {
         $blueprint = new Blueprint('test');
@@ -476,9 +476,9 @@ class PostgisGrammarTest extends BaseTestCase
             $this->getConnection(),
             $this->getGrammar()
         );
-        
+
         $this->assertEquals(1, count($statements));
         $this->assertStringContainsString('alter table', $statements[0]);
         $this->assertStringContainsString('add column "foo" tsvector', $statements[0]);
-    }	
+    }
 }

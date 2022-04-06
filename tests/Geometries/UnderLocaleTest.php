@@ -1,15 +1,15 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Geometries;
+namespace ReedTechLLC\LaravelPostgis\Tests\Geometries;
 
-use Ajthinking\LaravelPostgis\Geometries\GeometryCollection;
-use Ajthinking\LaravelPostgis\Geometries\LineString;
-use Ajthinking\LaravelPostgis\Geometries\MultiLineString;
-use Ajthinking\LaravelPostgis\Geometries\MultiPoint;
-use Ajthinking\LaravelPostgis\Geometries\MultiPolygon;
-use Ajthinking\LaravelPostgis\Geometries\Point;
-use Ajthinking\LaravelPostgis\Geometries\Polygon;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Geometries\GeometryCollection;
+use ReedTechLLC\LaravelPostgis\Geometries\LineString;
+use ReedTechLLC\LaravelPostgis\Geometries\MultiLineString;
+use ReedTechLLC\LaravelPostgis\Geometries\MultiPoint;
+use ReedTechLLC\LaravelPostgis\Geometries\MultiPolygon;
+use ReedTechLLC\LaravelPostgis\Geometries\Point;
+use ReedTechLLC\LaravelPostgis\Geometries\Polygon;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class UnderLocaleTest extends BaseTestCase
 {
@@ -150,5 +150,4 @@ class UnderLocaleTest extends BaseTestCase
             $geo_collection->toWKT()
         );
     }
-
 }

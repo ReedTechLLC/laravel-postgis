@@ -1,12 +1,12 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Schema;
+namespace ReedTechLLC\LaravelPostgis\Schema;
 
 use Closure;
 use \Illuminate\Database\Schema\PostgresBuilder as IlluminatePostgresBuilder;
 
 class Builder extends IlluminatePostgresBuilder
-{	
+{
     /**
      * Create a new command set with a Closure.
      *

@@ -1,9 +1,9 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Eloquent;
+namespace ReedTechLLC\LaravelPostgis\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
-use Ajthinking\LaravelPostgis\Geometries\GeometryInterface;
+use ReedTechLLC\LaravelPostgis\Geometries\GeometryInterface;
 
 class Builder extends EloquentBuilder
 {
@@ -25,7 +25,10 @@ class Builder extends EloquentBuilder
 
     protected function asWKT(GeometryInterface $geometry)
     {
-        return $this->getQuery()->raw(sprintf("%s.ST_GeogFromText('%s')",
-                function_exists('config') ? config('postgis.schema') : 'public', $geometry->toWKT()));
+        return $this->getQuery()->raw(sprintf(
+            "%s.ST_GeogFromText('%s')",
+            function_exists('config') ? config('postgis.schema') : 'public',
+            $geometry->toWKT()
+        ));
     }
 }

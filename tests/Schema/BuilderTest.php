@@ -1,12 +1,12 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Schema;
+namespace ReedTechLLC\LaravelPostgis\Tests\Schema;
 
 use Mockery;
-use Ajthinking\LaravelPostgis\PostgisConnection;
-use Ajthinking\LaravelPostgis\Schema\Blueprint;
-use Ajthinking\LaravelPostgis\Schema\Builder;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\PostgisConnection;
+use ReedTechLLC\LaravelPostgis\Schema\Blueprint;
+use ReedTechLLC\LaravelPostgis\Schema\Builder;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class BuilderTest extends BaseTestCase
 {

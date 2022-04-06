@@ -1,15 +1,15 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Eloquent;
+namespace ReedTechLLC\LaravelPostgis\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Support\Arr;
-use Ajthinking\LaravelPostgis\Exceptions\PostgisFieldsNotDefinedException;
-use Ajthinking\LaravelPostgis\Exceptions\PostgisTypesMalformedException;
-use Ajthinking\LaravelPostgis\Exceptions\UnsupportedGeomtypeException;
-use Ajthinking\LaravelPostgis\Geometries\Geometry;
-use Ajthinking\LaravelPostgis\Geometries\GeometryInterface;
-use Ajthinking\LaravelPostgis\Schema\Grammars\PostgisGrammar;
+use ReedTechLLC\LaravelPostgis\Exceptions\PostgisFieldsNotDefinedException;
+use ReedTechLLC\LaravelPostgis\Exceptions\PostgisTypesMalformedException;
+use ReedTechLLC\LaravelPostgis\Exceptions\UnsupportedGeomtypeException;
+use ReedTechLLC\LaravelPostgis\Geometries\Geometry;
+use ReedTechLLC\LaravelPostgis\Geometries\GeometryInterface;
+use ReedTechLLC\LaravelPostgis\Schema\Grammars\PostgisGrammar;
 
 trait PostgisTrait
 {
@@ -19,7 +19,7 @@ trait PostgisTrait
      * Create a new Eloquent query builder for the model.
      *
      * @param  \Illuminate\Database\Query\Builder $query
-     * @return \Ajthinking\LaravelPostgis\Eloquent\Builder
+     * @return \ReedTechLLC\LaravelPostgis\Eloquent\Builder
      */
     public function newEloquentBuilder($query)
     {
@@ -28,14 +28,21 @@ trait PostgisTrait
 
     protected function geogFromText(GeometryInterface $geometry)
     {
-        return $this->getConnection()->raw(sprintf("%s.ST_GeogFromText('%s')",
-                function_exists('config') ? config('postgis.schema') : 'public', $geometry->toWKT()));
+        return $this->getConnection()->raw(sprintf(
+            "%s.ST_GeogFromText('%s')",
+            function_exists('config') ? config('postgis.schema') : 'public',
+            $geometry->toWKT()
+        ));
     }
 
     protected function geomFromText(GeometryInterface $geometry, $srid = 4326)
     {
-        return $this->getConnection()->raw(sprintf("%s.ST_GeomFromText('%s', '%d')",
-                function_exists('config') ? config('postgis.schema') : 'public', $geometry->toWKT(), $srid));
+        return $this->getConnection()->raw(sprintf(
+            "%s.ST_GeomFromText('%s', '%d')",
+            function_exists('config') ? config('postgis.schema') : 'public',
+            $geometry->toWKT(),
+            $srid
+        ));
     }
 
     public function asWKT(GeometryInterface $geometry, $attrs)
@@ -56,7 +63,7 @@ trait PostgisTrait
         foreach ($this->attributes as $key => $value) {
             if ($value instanceof GeometryInterface) {
                 $this->geometries[$key] = $value; //Preserve the geometry objects prior to the insert
-                if (! $value instanceof GeometryCollection) {
+                if (!$value instanceof GeometryCollection) {
                     $attrs = $this->getPostgisType($key);
                     $this->attributes[$key] = $this->asWKT($value, $attrs);
                 } else {
@@ -67,7 +74,7 @@ trait PostgisTrait
 
         $insert = parent::performInsert($query, $options);
 
-        foreach($this->geometries as $key => $value){
+        foreach ($this->geometries as $key => $value) {
             $this->attributes[$key] = $value; //Retrieve the geometry objects so they can be used in the model
         }
 
@@ -96,7 +103,7 @@ trait PostgisTrait
 
         if (property_exists($this, 'postgisTypes')) {
             if (Arr::isAssoc($this->postgisTypes)) {
-                if(!array_key_exists($key, $this->postgisTypes)) {
+                if (!array_key_exists($key, $this->postgisTypes)) {
                     return $default;
                 }
                 $column = $this->postgisTypes[$key];
@@ -123,6 +130,5 @@ trait PostgisTrait
         } else {
             throw new PostgisFieldsNotDefinedException(__CLASS__ . ' has to define $postgisFields');
         }
-
     }
 }

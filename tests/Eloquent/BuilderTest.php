@@ -1,17 +1,17 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests\Eloquent;
+namespace ReedTechLLC\LaravelPostgis\Tests\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Query\Expression;
 use Mockery as m;
-use Ajthinking\LaravelPostgis\Eloquent\Builder;
-use Ajthinking\LaravelPostgis\Eloquent\PostgisTrait;
-use Ajthinking\LaravelPostgis\Geometries\LineString;
-use Ajthinking\LaravelPostgis\Geometries\Point;
-use Ajthinking\LaravelPostgis\Geometries\Polygon;
-use Ajthinking\LaravelPostgis\Tests\BaseTestCase;
+use ReedTechLLC\LaravelPostgis\Eloquent\Builder;
+use ReedTechLLC\LaravelPostgis\Eloquent\PostgisTrait;
+use ReedTechLLC\LaravelPostgis\Geometries\LineString;
+use ReedTechLLC\LaravelPostgis\Geometries\Point;
+use ReedTechLLC\LaravelPostgis\Geometries\Polygon;
+use ReedTechLLC\LaravelPostgis\Tests\BaseTestCase;
 
 class BuilderTest extends BaseTestCase
 {
@@ -41,7 +41,8 @@ class BuilderTest extends BaseTestCase
             ->andReturn([]);
 
         $this->builder = new Builder($this->queryBuilder);
-        $this->builder->setModel(new class extends Model {
+        $this->builder->setModel(new class extends Model
+        {
             use PostgisTrait;
             protected $postgisFields = [
                 'point' => Point::class,

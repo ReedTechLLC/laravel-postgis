@@ -1,10 +1,10 @@
 <?php
 
-namespace Ajthinking\LaravelPostgis\Tests;
+namespace ReedTechLLC\LaravelPostgis\Tests;
 
-use Ajthinking\LaravelPostgis\PostgisConnection;
-use Ajthinking\LaravelPostgis\Schema\Builder;
-use Ajthinking\LaravelPostgis\Tests\Stubs\PDOStub;
+use ReedTechLLC\LaravelPostgis\PostgisConnection;
+use ReedTechLLC\LaravelPostgis\Schema\Builder;
+use ReedTechLLC\LaravelPostgis\Tests\Stubs\PDOStub;
 
 class PostgisConnectionTest extends BaseTestCase
 {
