@@ -25,6 +25,14 @@ class MultiLineStringTest extends BaseTestCase
         $this->assertSame(2, $multilinestring->count());
     }
 
+    public function testFromWKT4d()
+    {
+        $multilinestring = MultiLineString::fromWKT('MULTILINESTRING ZM((1 1 1 1,2 2 2 2,2 3 4 3),(3 4 5 6,4 3 2 7,6 5 4 8))');
+        $this->assertInstanceOf(MultiLineString::class, $multilinestring);
+
+        $this->assertSame(2, $multilinestring->count());
+    }
+
     public function testToWKT()
     {
         $collection = new LineString(
@@ -59,6 +67,23 @@ class MultiLineStringTest extends BaseTestCase
         $this->assertSame('MULTILINESTRING Z((1 1 1,2 1 3,2 2 2,1 2 3,1 1 1))', $multilinestring->toWKT());
     }
 
+    public function testToWKT4d()
+    {
+        $collection = new LineString(
+            [
+                new Point(1, 1, 1, 1),
+                new Point(1, 2, 3, 2),
+                new Point(2, 2, 2, 3),
+                new Point(2, 1, 3, 4),
+                new Point(1, 1, 1, 5)
+            ]
+        );
+
+        $multilinestring = new MultiLineString([$collection]);
+
+        $this->assertSame('MULTILINESTRING ZM((1 1 1 1,2 1 3 2,2 2 2 3,1 2 3 4,1 1 1 5))', $multilinestring->toWKT());
+    }
+
     public function testJsonSerialize()
     {
         $multilinestring = MultiLineString::fromWKT('MULTILINESTRING Z((1 1 1,2 2 2,2 3 4),(3 4 5,4 3 2,6 5 4))');
@@ -66,6 +91,17 @@ class MultiLineStringTest extends BaseTestCase
         $this->assertInstanceOf(\GeoJson\Geometry\MultiLineString::class, $multilinestring->jsonSerialize());
         $this->assertSame(
             '{"type":"MultiLineString","coordinates":[[[1,1,1],[2,2,2],[2,3,4]],[[3,4,5],[4,3,2],[6,5,4]]]}',
+            json_encode($multilinestring)
+        );
+    }
+
+    public function testJsonSerialize4d()
+    {
+        $multilinestring = MultiLineString::fromWKT('MULTILINESTRING ZM((1 1 1 1,2 2 2 2,2 3 4 3),(3 4 5 5,4 3 2 6,6 5 4 7))');
+
+        $this->assertInstanceOf(\GeoJson\Geometry\MultiLineString::class, $multilinestring->jsonSerialize());
+        $this->assertSame(
+            '{"type":"MultiLineString","coordinates":[[[1,1,1,1],[2,2,2,2],[2,3,4,3]],[[3,4,5,5],[4,3,2,6],[6,5,4,7]]]}',
             json_encode($multilinestring)
         );
     }

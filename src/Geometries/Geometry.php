@@ -34,10 +34,14 @@ abstract class Geometry implements GeometryInterface, \JsonSerializable
             case 'POINT':
             case 'POINTZ':
             case 'POINT Z':
+            case 'POINT ZM':
+            case 'POINT Z M':
                 return Point::class;
             case 'LINESTRING':
             case 'LINESTRINGZ':
             case 'LINESTRING Z':
+            case 'LINESTRING ZM':
+            case 'LINESTRING Z M':
                 return LineString::class;
             case 'POLYGON':
             case 'POLYGONZ':
@@ -46,10 +50,14 @@ abstract class Geometry implements GeometryInterface, \JsonSerializable
             case 'MULTIPOINT':
             case 'MULTIPOINTZ':
             case 'MULTIPOINT Z':
+            case 'MULTIPOINT ZM':
+            case 'MULTIPOINT Z M':
                 return MultiPoint::class;
             case 'MULTILINESTRING':
             case 'MULTILINESTRINGZ':
             case 'MULTILINESTRING Z':
+            case 'MULTILINESTRING ZM':
+            case 'MULTILINESTRING Z M':
                 return MultiLineString::class;
             case 'MULTIPOLYGON':
             case 'MULTIPOLYGONZ':

@@ -2,6 +2,8 @@
 
 namespace ReedTechLLC\LaravelPostgis\Geometries;
 
+use InvalidArgumentException;
+
 class MultiPoint extends PointCollection implements GeometryInterface, \JsonSerializable
 {
     /**
@@ -27,10 +29,20 @@ class MultiPoint extends PointCollection implements GeometryInterface, \JsonSeri
         return $this->points[0]->is3d();
     }
 
+    public function is4d()
+    {
+        if (count($this->points) === 0) return false;
+        return $this->points[0]->is4d();
+    }
+
     public function toWKT()
     {
         $wktType = 'MULTIPOINT';
-        if ($this->is3d()) $wktType .= ' Z';
+        if ($this->is3d()) {
+            $wktType .= ' Z';
+            if ($this->is4d())
+                $wktType .=  'M';
+        }
         return sprintf('%s(%s)', $wktType, (string)$this);
     }
 
@@ -44,7 +56,7 @@ class MultiPoint extends PointCollection implements GeometryInterface, \JsonSeri
     public static function fromString($wktArgument)
     {
         $matches = [];
-        preg_match_all('/\(\s*(\d+\s+\d+(\s+\d+)?)\s*\)/', trim($wktArgument), $matches);
+        preg_match_all('/\(\s*(\d+\s+\d+(\s+\d+)?(\s+\d+)?)\s*\)/', trim($wktArgument), $matches);
 
         if (count($matches) < 2) {
             return new static([]);

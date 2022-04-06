@@ -317,6 +317,28 @@ class PostgisGrammar extends PostgresGrammar
     }
 
     /**
+     * Adds a statement to add a 3d point geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typePointZ(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'POINTZ');
+    }
+
+    /**
+     * Adds a statement to add a 4d point geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typePointZM(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'POINTZM');
+    }
+
+    /**
      * Adds a statement to add a point geometry column
      *
      * @param \Illuminate\Support\Fluent $column
@@ -325,6 +347,28 @@ class PostgisGrammar extends PostgresGrammar
     public function typeMultipoint(Fluent $column)
     {
         return $this->createTypeDefinition($column, 'MULTIPOINT');
+    }
+
+    /**
+     * Adds a statement to add a 3D multi point geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typeMultipointZ(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'MULTIPOINTZ');
+    }
+
+    /**
+     * Adds a statement to add a 4D multi point geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typeMultipointZM(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'MULTIPOINTZM');
     }
 
     /**
@@ -372,6 +416,28 @@ class PostgisGrammar extends PostgresGrammar
     }
 
     /**
+     * Adds a statement to add a linestringz geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typeLinestringZ(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'LINESTRINGZ');
+    }
+
+    /**
+     * Adds a statement to add a linestring geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typeLinestringZM(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'LINESTRINGZM');
+    }
+
+    /**
      * Adds a statement to add a multilinestring geometry column
      *
      * @param \Illuminate\Support\Fluent $column
@@ -380,6 +446,28 @@ class PostgisGrammar extends PostgresGrammar
     public function typeMultilinestring(Fluent $column)
     {
         return $this->createTypeDefinition($column, 'MULTILINESTRING');
+    }
+
+    /**
+     * Adds a statement to add a multilinestringz geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typeMultilinestringZ(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'MULTILINESTRINGZ');
+    }
+
+    /**
+     * Adds a statement to add a multilinestringzm geometry column
+     *
+     * @param \Illuminate\Support\Fluent $column
+     * @return string
+     */
+    public function typeMultilinestringZM(Fluent $column)
+    {
+        return $this->createTypeDefinition($column, 'MULTILINESTRINGZM');
     }
 
     /**
