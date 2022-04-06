@@ -10,10 +10,21 @@ class LineString extends PointCollection implements GeometryInterface
         return $this->points[0]->is3d();
     }
 
+    public function is4d()
+    {
+        if (count($this->points) === 0) return false;
+        return $this->points[0]->is4d();
+    }
+
     public function toWKT()
     {
         $wktType = 'LINESTRING';
-        if ($this->is3d()) $wktType .= ' Z';
+        if ($this->is3d()) {
+            $wktType .= ' Z';
+            if ($this->is4d()) {
+                $wktType .= 'M';
+            }
+        }
         return sprintf('%s(%s)', $wktType, $this->toPairList());
     }
 
