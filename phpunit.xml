@@ -8,11 +8,12 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="true"
-         syntaxCheck="true"
          verbose="true">
     <testsuites>
         <testsuite name="Laravel postgis Test Suite">
             <directory suffix="Test.php">./tests</directory>
+            <exclude>./tests/Schema/BlueprintTest.php</exclude>
+            <exclude>./tests/Eloquent/BuilderTest.php</exclude>
         </testsuite>
     </testsuites>
 </phpunit>
